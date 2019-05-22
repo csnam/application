@@ -211,9 +211,14 @@
 <script type="text/javascript" src="scripts/custom.js"></script>
 <script>
     $("#joinBtn").click(function(){
-        alert($("#nameInput").val());
         $.ajax({
-            url:'http://localhost:3000/ajaxTest',
+            url:'http://localhost:3000/join',
+            type : 'POST',
+            data : {
+                name : $("#nameInput").val(),
+                email : $("#emailInput").val(),
+                password : $("#passwordInput").val(),
+            },
             success:function(data){
                 alert(data);
             }

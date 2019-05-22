@@ -7,9 +7,12 @@ var connection = mysql.createConnection({
   password : 'q1w2e3r4',
   database : 'fintech'
 });
-connection.connect();
 
+connection.connect();
 app.use(express.static(__dirname + '/public'));
+
+app.use(express.json());
+app.use(express.urlencoded({extended:false}));
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -24,11 +27,20 @@ app.get('/join', function (req, res) {
 })
 
 app.post('/join', function(req, res){
-    var sql = 'INSERT INTO `fintech`.`user` (`name`, `birthday`, `user_id`, `user_password`, `phone`) VALUES (?,?,?,?,?);'
-    connection.query(sql, function (error, results) {
-      if (error) throw error;
-      else {
+    console.log(req);
+    var name = req.body.name;
+    var birthday = new Date();
+    var email = req.body.email;
+    var password = req.body.password;
+    var phone = "0109922";
 
+    console.log(name, email, password);
+    var sql = 'INSERT INTO `fintech`.`user` (`name`, `birthday`, `user_id`, `user_password`, `phone`) VALUES (?,?,?,?,?);'
+    connection.query(sql,[name, birthday, email, password, phone], function (error, results) {
+      if (error) throw error;  
+      else {
+          console.log(this.sql);
+          res.json(1);
       }
     });
 })
