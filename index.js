@@ -61,10 +61,13 @@ app.post('/join', function(req, res){
     var email = req.body.email;
     var password = req.body.password;
     var phone = "0109922";
+    var accessToken = req.body.accessToken;
+    var refreshToken = req.body.refreshToken;
+    var useNum = req.body.useseqnum;
 
     console.log(name, email, password);
-    var sql = 'INSERT INTO `fintech`.`user` (`name`, `birthday`, `user_id`, `user_password`, `phone`) VALUES (?,?,?,?,?);'
-    connection.query(sql,[name, birthday, email, password, phone], function (error, results) {
+    var sql = 'INSERT INTO `fintech`.`user` (`name`, `birthday`, `user_id`, `user_password`, `phone`, accessToken, refreshToken, userseqnum) VALUES (?,?,?,?,?,?,?,?);'
+    connection.query(sql,[name, birthday, email, password, phone, accessToken, refreshToken, useNum], function (error, results) {
       if (error) throw error;  
       else {
           console.log(this.sql);
