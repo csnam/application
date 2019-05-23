@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 var request = require('request');
 var mysql = require('mysql');
+var cors = require('cors');
 var jwt = require('jsonwebtoken');
 var auth = require('./lib/auth');
 var tokenKey = 'f$i1nt#ec1hT@oke1n!Key'
@@ -14,7 +15,7 @@ var connection = mysql.createConnection({
 
 connection.connect();
 app.use(express.static(__dirname + '/public'));
-
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
