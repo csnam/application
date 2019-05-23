@@ -119,10 +119,36 @@ app.post('/login', function (req, res) {
       }
     });
 })
-
 app.get('/balance', function(req, res){
-    var finNum = req.query.fintech_use_num
+    res.render('balance');
+})
 
+app.post('/balance', auth, function(req,res){
+    var userId = req.decoded.userId;
+    var finNum = req.body.finNum;
+    var sql = "SELECT userseqnum, accessToken FROM user WHERE user_id = ?";
+    connection.query(sql,[userId], function(err, result){
+        if(err){
+            console.error(err);
+            throw err;
+        }
+        else {
+            var option = {
+                method : "GET",
+                url :'https://openapi.open-platform.or.kr/v1.0/account/balance?fintech_use_num='+finNum+'&tran_dtime=20190523101921',
+                headers : {
+                    'Authorization' : 'Bearer ' + result[0].accessToken
+                }
+            };
+            request(option, function(err, response, body){
+                if(err) throw err;
+                else {
+                    console.log(body);
+                    res.render('balance', {data : JSON.parse(body)});
+                }
+            })
+        }
+    })
 })
 
 app.get('/main', function(req, res){
@@ -148,7 +174,6 @@ app.post('/getUser', auth, function(req, res){
             request(option, function(err, response, body){
                 if(err) throw err;
                 else {
-                    console.log(body);
                     res.json(JSON.parse(body));
                 }
             })
