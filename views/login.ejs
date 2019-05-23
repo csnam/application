@@ -39,9 +39,9 @@
             },
             success:function(data){
                 alert(data);
+                sessionStorage.setItem('jwtToken', data);
             }
         })
     });
-
 </script>
 <% include ./hf/footer.ejs %>

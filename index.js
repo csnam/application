@@ -120,6 +120,32 @@ app.post('/login', function (req, res) {
     });
 })
 
+app.post('/getUser', auth, function(req, res){
+    var userId = req.decoded.userId;
+    var sql = "SELECT userseqnum, accessToken FROM user WHERE user_id = ?";
+    connection.query(sql,[userId], function(err, result){
+        if(err){
+            console.error(err);
+            throw err;
+        }
+        else {
+            var option = {
+                method : "GET",
+                url :'https://testapi.open-platform.or.kr/user/me?user_seq_no='+ result[0].userseqnum,
+                headers : {
+                    'Authorization' : 'Bearer ' + result[0].accessToken
+                }
+            };
+            request(option, function(err, response, body){
+                if(err) throw err;
+                else {
+                    console.log(body);
+                }
+            })
+        }
+    })
+})
+
 app.get('/tokenTest', auth ,function(req, res){
     console.log(req.decoded);
 })
