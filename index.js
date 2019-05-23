@@ -120,6 +120,10 @@ app.post('/login', function (req, res) {
     });
 })
 
+app.get('/main', function(req, res){
+    res.render('main');
+})
+
 app.post('/getUser', auth, function(req, res){
     var userId = req.decoded.userId;
     var sql = "SELECT userseqnum, accessToken FROM user WHERE user_id = ?";
@@ -140,6 +144,7 @@ app.post('/getUser', auth, function(req, res){
                 if(err) throw err;
                 else {
                     console.log(body);
+                    res.json(JSON.parse(body));
                 }
             })
         }
