@@ -120,6 +120,11 @@ app.post('/login', function (req, res) {
     });
 })
 
+app.get('/balance', function(req, res){
+    var finNum = req.query.fintech_use_num
+
+})
+
 app.get('/main', function(req, res){
     res.render('main');
 })

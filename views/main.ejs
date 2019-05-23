@@ -41,13 +41,13 @@
                     $("#cardList").append(
                         '    <div data-height="150" style="height : 150px" class="caption caption-margins round-medium shadow-large">\n' +
         '        <div class="caption-center right-15 top-15 text-right">\n' +
-        '            <a href="#" class="back-button button button-xs button-round-huge bg-highlight">송금</a>\n' +
+        '            <a href="/balance?fin_use_num='+resultElement.fintech_use_num+'" class="back-button button button-xs button-round-huge bg-highlight">잔액조회</a>\n' +
         '            <a href="#" class="back-button button button-xs button-round-huge bg-highlight">결제</a>\n' +
         '        </div>\n' +
         '        <div class="caption-center left-15 text-left">\n' +
-        '            <h1 class="color-white bolder">7,000 원</h1>\n' +
+        '            <h1 class="color-white bolder">'+resultElement.bank_name+'</h1>\n' +
         '            <p class="under-heading color-white opacity-90 bottom-0">\n' +
-        '                ' + resultElement.bank_name+
+        '                ' + resultElement.fintech_use_num +
         '            </p>\n' +
         '        </div>\n' +
         '        <div class="caption-overlay bg-black opacity-70"></div>\n' +
