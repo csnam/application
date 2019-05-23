@@ -133,9 +133,10 @@ app.post('/balance', auth, function(req,res){
             throw err;
         }
         else {
+            console.log(result[0].accessToken);
             var option = {
                 method : "GET",
-                url :'https://openapi.open-platform.or.kr/v1.0/account/balance?fintech_use_num='+finNum+'&tran_dtime=20190523101921',
+                url :'https://testapi.open-platform.or.kr/v1.0/account/balance?fintech_use_num='+finNum+'&tran_dtime=20190523101921',
                 headers : {
                     'Authorization' : 'Bearer ' + result[0].accessToken
                 }
@@ -144,7 +145,7 @@ app.post('/balance', auth, function(req,res){
                 if(err) throw err;
                 else {
                     console.log(body);
-                    res.render('balance', {data : JSON.parse(body)});
+                    res.json(JSON.parse(body));
                 }
             })
         }
