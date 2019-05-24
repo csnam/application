@@ -1,33 +1,28 @@
-const axios = require("axios");
-const cheerio = require("cheerio");
-const log = console.log;
+const request = require('request');
+const cheerio = require('cheerio');
 
-const getHtml = async () => {
-  try {
-    return await axios.get("https://spib.wooribank.com/pib/Dream?withyou=CTCER0001&fromSite=pib");
-  } catch (error) {
-    console.error(error);
-  }
-};
+const url = "https://www.kisa.or.kr/notice/bid_List.jsp";
 
-getHtml()
-  .then(html => {
-    let ulList = [];
-    const $ = cheerio.load(html.data);
-    const $bodyList = $("div.accessibility")
-    var data = $bodyList;
-    // $bodyList.each(function(i, elem) {
-    //   ulList[i] = {
-    //       title: $(this).find('strong.news-tl a').text(),
-    //       url: $(this).find('strong.news-tl a').attr('href'),
-    //       image_url: $(this).find('p.poto a img').attr('src'),
-    //       image_alt: $(this).find('p.poto a img').attr('alt'),
-    //       summary: $(this).find('p.lead').text().slice(0, -11),
-    //       date: $(this).find('span.p-time').text()
-    //   };
-    // });
+request(url, (error, response, body) => {
+    if (error) throw error;
+    let $ = cheerio.load(body);
+    try {
+        let a1 = '';
+        let a2 = '';
+        let a3 = '';
 
-    // const data = ulList.filter(n => n.title);
-    return data;
-  })
-  .then(res => log(res));
+        $('table').find('tr').each(function (index, elem) {
+            if (index % 10 === 0) {
+                a1 = $(this).find('th').text().trim();
+                console.log(`${a1}`);
+            } 
+            else {
+                a2 = $(this).find('td').text().trim();
+                a3 = $(this).find('td').text().trim();
+                console.log(a3)
+            }
+        });
+    } catch (error) {
+        console.error(error);
+    }
+});
