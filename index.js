@@ -27,6 +27,8 @@ app.get('/', function (req, res) {
     res.render('index')
 })
 
+
+
 app.get('/login', function(req, res){
     res.render('login');
 })
@@ -41,6 +43,47 @@ app.get('/withdraw', function(req, res){
 
 app.get('/join', function (req, res) {
     res.render('join')
+})
+
+app.post('/withdrawQR', auth, function (req, res) {
+    var userId = req.decoded.userId;
+    var finNum = req.body.qrFin;
+    var sql = "SELECT userseqnum, accessToken FROM user WHERE user_id = ?";
+    connection.query(sql,[userId], function(err, result){
+        if(err){
+            console.error(err);
+            throw err;
+        }
+        else {
+            console.log(result[0].accessToken);
+            var option = {
+                method : "POST",
+                url :'https://testapi.open-platform.or.kr/transfer/withdraw',
+                headers : {
+                    'Authorization' : 'Bearer ' + result[0].accessToken,
+                    'Content-Type' : 'application/json; charset=UTF-8'
+                },
+                json : {
+                    dps_print_content : '널앤서',
+                    fintech_use_num : finNum,
+                    tran_amt : 11000,
+                    print_content : '널앤서',
+                    tran_dtime : '20190523101921'
+                }
+            };
+            request(option, function(err, response, body){
+                if(err) throw err;
+                else {
+                    if(body.rsp_code == "A0000"){
+                        res.json(1);
+                    }
+                    else {
+                        res.json(2);
+                    }
+                }
+            })
+        }
+    })
 })
 
 app.post('/withdraw', auth, function (req, res) {
@@ -68,16 +111,14 @@ app.post('/withdraw', auth, function (req, res) {
                     print_content : '널앤서',
                     tran_dtime : '20190523101921'
                 }
-
             };
             request(option, function(err, response, body){
                 if(err) throw err;
                 else {
-                    console.log(body);
                     var requestResult = body
                     if(requestResult.rsp_code == "A0000"){
                         var sql = "UPDATE user set point = point + ? WHERE user_id = ?"
-                        connection.query(sql, [requestResult.tran_amt, userId], function(err, result){
+                        connection.query(sql, [Number(requestResult.tran_amt), userId], function(err, result){
                             if(err){
                                 console.error(err);
                                 throw err;
