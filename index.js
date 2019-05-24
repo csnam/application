@@ -138,11 +138,11 @@ app.post('/transaction_list', auth, function(req,res){
             var option = {
                 method : "GET",
                 url :'https://testapi.open-platform.or.kr/v1.0/account/transaction_list?'+
-                'fintech_use_num=finNum&'+
+                'fintech_use_num='+finNum+'&'+
                 'inquiry_type=A&'+
                 'from_date=20160101&'+
                 'to_date=20160101&'+
-                'sort_order=20160101&'+
+                'sort_order=D&'+
                 'page_index=1&'+
                 'tran_dtime=20160101121212&',
                 headers : {
