@@ -9,8 +9,8 @@ var tokenKey = 'f$i1nt#ec1hT@oke1n!Key'
 var connection = mysql.createConnection({
   host     : '127.0.0.1',
   user     : 'root',
-  password : 'q1w2e3r4',
-  database : 'fintech'
+  password : 'csnam',
+  database : 'fintech_app'
 });
 
 connection.connect();
