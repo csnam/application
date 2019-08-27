@@ -16,6 +16,6 @@ app.get('/', function(req, res){
     //res.send('Fighting change Team!!');
     res.send('<html><h1>'+"Fighting change Team!!" +'</h1></html>');
 })
-
+// 이제 시작----
 app.listen(port);
 console.log("Listening on port ", port);
