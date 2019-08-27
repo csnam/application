@@ -1,4 +1,4 @@
-<!-- qr 코드 띄어주는 페이지 -->
+<!-- 위치 기반으로 검색 -->
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -41,44 +41,12 @@
                 
         <div class="content-boxed">
             <div class="content">
-
-
-                    <script src="scripts/instascan.min.js"></script>
-                    <video id="preview" style="width: 100%; height:100%; margin-top: 25vh"  ></video>
-                    <script type="text/javascript">
-                        let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-                        scanner.addListener('scan', function (content) {
-                            $.ajax({
-                            url: 'http://localhost:3000/withdrawQR',
-                            type: 'POST',
-                            headers: {
-                                'x-access-token': sessionStorage.getItem('jwtToken')
-                            },
-                            data: {
-                                qrFin : content
-                            },
-                            success: function (data) {
-                                console.log(data);
-                                if(data == 1){
-                                    alert('결제가 완료되었습니다.');
-                                }
-                                else {
-                                    alert('결제가 미승인되었습니다')
-                                }
-                            }
-                        })
-                        });
-                        Instascan.Camera.getCameras().then(function (cameras) {
-                            if (cameras.length > 0) {
-                                scanner.start(cameras[0]);
-                            } else {
-                                console.error('No cameras found.');
-                            }
-                        }).catch(function (e) {
-                            console.error(e);
-                        });
-                    </script>                    
-               
+                <h1 class="bolder">Starter Page</h1>
+                <p>
+                    This is an empty page, containing all elements you need to to create more pages. Check the documentation files, and copy & paste your features into this page, then save it and so on. 
+                    <br><br>
+                    If you run into any issues, let us know and we'll gladly assist.
+                </p>
             </div>
         </div>
         
@@ -262,4 +230,3 @@
 <script type="text/javascript" src="scripts/plugins.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
 </body>
-

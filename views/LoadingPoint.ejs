@@ -1,4 +1,4 @@
-<!-- qr 코드 띄어주는 페이지 -->
+<!-- 상점에서 포인트 지급 -->
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -37,49 +37,47 @@
     </div>
     
     <div class="page-content header-clear-medium">   
-            
+        
+        <div class="content-boxed">
+            <p class="content">
+                We will convert your change to point! 
+            </p>
+        </div>
                 
         <div class="content-boxed">
-            <div class="content">
 
 
-                    <script src="scripts/instascan.min.js"></script>
-                    <video id="preview" style="width: 100%; height:100%; margin-top: 25vh"  ></video>
-                    <script type="text/javascript">
-                        let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-                        scanner.addListener('scan', function (content) {
-                            $.ajax({
-                            url: 'http://localhost:3000/withdrawQR',
-                            type: 'POST',
-                            headers: {
-                                'x-access-token': sessionStorage.getItem('jwtToken')
-                            },
-                            data: {
-                                qrFin : content
-                            },
-                            success: function (data) {
-                                console.log(data);
-                                if(data == 1){
-                                    alert('결제가 완료되었습니다.');
-                                }
-                                else {
-                                    alert('결제가 미승인되었습니다')
-                                }
-                            }
-                        })
-                        });
-                        Instascan.Camera.getCameras().then(function (cameras) {
-                            if (cameras.length > 0) {
-                                scanner.start(cameras[0]);
-                            } else {
-                                console.error('No cameras found.');
-                            }
-                        }).catch(function (e) {
-                            console.error(e);
-                        });
-                    </script>                    
-               
+                <!-- 나중에 추가 (상점 정보) -->
+     
+                <div data-height="220" class="caption caption-margins round-medium shadow-large">
+
+                    <div class="caption-top top-25 left-20 right-20">
+                        <h1 class="color-white bolder font-22">Convert to Point</h1>
+                        <p class="color-white opacity-70 bottom-15">
+                            Please wait a little bit longer.....
+                        </p>
+                    </div>
+                    <div class="caption-bottom bottom-25 left-20 right-20">
+                        <div class="progress-bar-wrapper"
+                             data-progress-complete="50"
+                             data-progress-height="23" 
+                             data-progress-round="false"
+                             data-progress-border="0" 
+                             data-progress-text-visible="true"
+                             data-progress-text-position="left"
+                             data-progress-text-color="#FFFFFF"
+                             data-progress-text-size="11"
+                             data-progress-text-before=""
+                             data-progress-text-after=" - Point Converting"
+                             data-progress-bar-color="#D8334A"
+                             data-progress-bar-background="rgba(255,255,255,0.2)">
+                            <div class="progress-bar"></div>
+                        </div>
+                    </div>
+                    <div class="caption-overlay bg-black opacity-80"></div>
+                </div>  
             </div>
+
         </div>
         
         <a href="https://enableds.com/support/" class="default-link button button-m shadow-huge button-round-large bottom-30 button-full button-margins bg-highlight">Enabled - Support Forum</a>
@@ -262,4 +260,3 @@
 <script type="text/javascript" src="scripts/plugins.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
 </body>
-
