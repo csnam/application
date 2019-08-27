@@ -1,8 +1,4 @@
-<!-- 상점 입장에서의 QR 코드 -->
-<!-- qr 코드 띄어주는 페이지 -->
-<!-- QR 코드를 찍으면 고유의 QR 코드가 나옴 -->
-
-
+<!-- 상점에서 포인트 적립 -->
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -45,45 +41,88 @@
         <div class="content-boxed">
             <div class="content">
 
+                    <input id="change" type="text" placeholder=""> <br> <!-- 잔돈 -->
+                    <button id="btn" href="#" class="button button-full button-m shadow-large button-round-small bg-green1-dark top-10 bottom-0">click</button>
+                
+                    <script type="text/javascript" src="scripts/jquery.js"></script>
 
-                    <script src="scripts/instascan.min.js"></script>
-                    <video id="preview" style="width: 100%; height:100%; margin-top: 25vh"  ></video>
-                    <script type="text/javascript">
-                        let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-                        scanner.addListener('scan', function (content) {
-                            console.log(content);
+                    <script type="text/javascript" src="scripts/plugins.js"></script>
+                    
+                    <script type="text/javascript" src="scripts/custom.js"></script>
+                    
+                    <script>
+                    
+                        $("#btn").click(function(){
+                    
                             $.ajax({
-                            url: 'http://localhost:3000/withdrawQR',
-                            type: 'POST',
-                            headers: {
-                                'x-access-token': sessionStorage.getItem('jwtToken')
-                            },
-                            data: {
-                                qrFin : content
-                            },
-                            success: function (data) {
-                                console.log(data);
-                                if(data == 1){
-                                    alert('결제가 완료되었습니다.');
+                    
+                                url : "http://localhost:3000/changeToMoney",
+                    
+                                type : 'post',
+                    
+                                data : {
+                    
+                                    change : $("#change").val(),
+                                },
+                    
+                                success: function(data){
+                    
+                                    console.log(data);
+                                    // 로딩 완료창 또는 다른 페이지로 이동
+                    
                                 }
-                                else {
-                                    alert('결제가 미승인되었습니다')
-                                }
-                            }
+                    
+                             })
+                    
                         })
-                        });
-
-                        Instascan.Camera.getCameras().then(function (cameras) {
-                            if (cameras.length > 0) {
-                                scanner.start(cameras[0]);
-                            } else {
-                                console.error('No cameras found.');
-                            }
-                        }).catch(function (e) {
-                            console.error(e);
-                        });
-                    </script>                    
-               
+                    
+                        $("#authBtn").click(function(){
+                    
+                            var client_id = "l7xx9aeec8195c534ad9a0ebd55aa6bc9e81";
+                    
+                            var redirect_uri = "http://localhost:3000/authResult";
+                    
+                            var scope = "login inquiry transfer";
+                    
+                            var response_type = "JSON";
+                    
+                            var qs =
+                    
+                            "?response_type=code&"
+                    
+                            + "client_id="+client_id+"&"
+                    
+                            + "redirect_uri=http://localhost:3000/authResult&"
+                    
+                            + "scope="+scope+"&"
+                    
+                            + "auth_type=0&"
+                    
+                            + "invoke_type=ajax"
+                    
+                            $.ajax({
+                    
+                                url:'https://testapi.open-platform.or.kr/oauth/2.0/authorize2'+ qs,
+                    
+                                type : 'GET',
+                    
+                                success:function(data){
+                    
+                                    window.name ="parents";
+                    
+                                    console.log(data.location);
+                    
+                                    var tmpwindow = window.open("about:blank");
+                    
+                                    tmpwindow.location = data.location;//추가
+                    
+                                }
+                    
+                            })
+                    
+                        })
+                    
+                    </script>
             </div>
         </div>
         
@@ -267,4 +306,3 @@
 <script type="text/javascript" src="scripts/plugins.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
 </body>
-
