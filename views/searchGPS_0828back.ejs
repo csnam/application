@@ -20,13 +20,29 @@
       margin: 0;
       padding: 0;
     }
+    #transactionTable { 
+      border-collapse:collapse;
+      border: 1px solid black;
+    }
+
+    th,td{
+      border: 1px solid black;
+    }
  </style>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
 
 </head>
     
 <body>
   <div id="map"></div>
+  <p>
+      <b> 적립 가능한 상점 리스트  </b>
+      <table id="transactionTable"></table>
+
+  </p>
+ 
   <script>
+    var localserivce=0;
     var locations = [
         {lat: 37.497160, lng: 127.122604},
         {lat: 37.497160, lng: 127.122614},
@@ -46,21 +62,68 @@
      //37.494472, 127.121060
 
     function makeMap(position){
-      console.log(position);
+     
       //position.coords.latitude= 37.494991;
       //position.coords.longitude= 127.122390;   // 왜 안되는 지.
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 16,
-        center: {lat: position.coords.latitude, lng: position.coords.longitude}
-        //center: {lat: 37.494991, lng: 127.122390}  // 핀테크 지원센터 테스트용 강제지정
-      });
-  
-       setMarkers(map);
-    }
-    
-    function initMap() {
+      if(localserivce){ 
+          var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: {lat: position.coords.latitude, lng: position.coords.longitude}
+          });
+      }
+      else {
+          var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: {lat: 37.494991, lng: 127.122390}
+          }); 
+      }
+      // 핀테크 지원센터 테스트용 강제지정
+      setMarkers(map);
+   }
+  function ShowStoreList(data){
+      var resultList = data;
+      console.log(resultList);
+      for (let i = 0; i < resultList.length; i++) {
+          console.log("for loop ==" + i);
+          const element = resultList[i];
+          $("#transactionTable").append(
+              '<tr>' +
+              '<td>'+element.No+'</td>' +
+              '<td>'+element.store_id+'</td>' +
+              '<td>'+element.name+'</td>' +
+              '<td>'+element.store_sort+'</td>' +
+              '<td>'+element.telno+'</td>' +
+              '<td>'+element.country+'</td>' +
+              '<td>'+element.address+'</td>' +
+              '<td>'+element.latitude+'</td>' +
+              '<td>'+element.longtitude+'</td>' +
+              '</tr>'
+          )
+      }
+  }
+  function initMap() {
+    //---
+    $.ajax({
+            url:'http://localhost:3000/getStoreGpsData',
+            type : 'POST',
+            data : {
+          },
+          success:function(data){
+              console.log("initMap success ===============");
+              ShowStoreList(data);
+              
+          }
+      })
+
+    if(localserivce){ 
       navigator.geolocation.getCurrentPosition(success, error, options);
+      console.log(position);
     }
+    else {
+      var position=0;
+      makeMap(position);  //핀테크 지원센터 테스트용 강제지정
+    }
+  }
 
     var options = {
       enableHighAccuracy: true,
@@ -70,12 +133,11 @@
 
     function success(pos) {
       var crd = pos.coords;
-      console.log('Your current position is:');
-      console.log('Latitude : ' + crd.latitude);
-      console.log('Longitude: ' + crd.longitude);
-      console.log('More or less ' + crd.accuracy + ' meters.');
-      
-      makeMap(pos);
+      // console.log('Your current position is:');
+      // console.log('Latitude : ' + crd.latitude);
+      // console.log('Longitude: ' + crd.longitude);
+      // console.log('More or less ' + crd.accuracy + ' meters.');
+        makeMap(pos);
     };
 
     function error(err) {

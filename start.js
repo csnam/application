@@ -6,8 +6,8 @@ var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : '127.0.0.1',
   user     : 'root',
-  password : 'fintech6327',
-  database : 'fintech'
+  password : 'csnam',
+  database : 'fintech_db'
 });
 connection.connect();
 
@@ -90,6 +90,7 @@ app.get('/storePoint', function(req, res){
     res.render('storePoint');
 })
 
+
 //포인트 인출 (qr)
 app.post('/withdrawQR', function(req, res, next){
 
@@ -141,4 +142,16 @@ app.post('/changeToMoney', function(req, res, next){
         }
     })
 
+})
+
+app.post('/getStoreGpsData', function(req, res){
+    console.log("getStoreGpsData");
+    var sql = "SELECT * FROM fintech_db.tbl_store;"
+    connection.query(sql, [], function(err, result){
+        if(err){
+            console.error(err);
+        }
+        console.log(result);
+        res.json(result)
+    })
 })
