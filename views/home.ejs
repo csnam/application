@@ -1,5 +1,3 @@
-<!-- 홈화면 -->
-
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -30,17 +28,13 @@
     
     
     <div id="footer-menu" class="footer-menu-5-icons footer-menu-style-1">
-        <a href="index.html"><i class="fa fa-home"></i><span>Home</span></a>
-        <a href="index-components.html"><i class="fa fa-star"></i><span>Features</span></a>
-        <a href="index-pages.html" class="active-nav"><i class="fa fa-heart"></i><span>Pages</span></a>
-        <a href="index-search.html"><i class="fa fa-search"></i><span>Search</span></a>
-        <a href="#" data-menu="menu-settings"><i class="fa fa-cog"></i><span>Settings</span></a>
-        <div class="clear"></div>
+      
     </div>
     
 	<div class="page-content">	
-        <div class="cover-wrapper cover-has-buttons">    
-            <a href="#" class="cover-button button button-round-huge shadow-large button-full bg-green1-dark button-m">Let's do it!</a>
+        <div></div>
+        <div class="cover-wrapper cover-has-buttons">
+            <button id="loginBtn" class="button button-full button-m shadow-large button-round-small bg-green1-dark top-30 bottom-0">LOGIN</button>
             <a href="#" class="cover-next color-gray2-dark">Next<i class="fa fa-angle-right left-10"></i></a>
             <a href="#" class="cover-prev color-gray2-dark"><i class="fa fa-angle-left right-10"></i>Previous</a>
             <div class="cover-slider owl-carousel">
@@ -232,4 +226,11 @@
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/plugins.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
+
+<script>
+        $("#loginBtn").click(function(){
+            alert('test')
+            location.href="/login"
+        });
+</script>
 </body>

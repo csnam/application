@@ -20,30 +20,69 @@
         <div class="loader-main"><div class="preload-spinner border-highlight"></div></div>
     </div>
     
-	<div class="header header-fixed header-logo-left">
-        <a href="index.html" class="header-title">Sticky Mobile</a>
-		<a href="page-contact.html" class="header-icon header-icon-1"><i class="fas fa-envelope"></i></a>
-		<a href="#" data-toggle-theme-switch class="header-icon header-icon-2"><i class="fas fa-moon"></i></a>
-	</div>
+   <div class="header header-fixed header-logo-left">
+        <a href="index.html" class="header-title">Change-Up (Store)</a>
+      <a href="page-contact.html" class="header-icon header-icon-1"><i class="fas fa-envelope"></i></a>
+      <a href="#" data-toggle-theme-switch class="header-icon header-icon-2"><i class="fas fa-moon"></i></a>
+   </div>
     
-    <div id="footer-menu" class="footer-menu-5-icons footer-menu-style-1">
-        <a href="index.html" class="active-nav"><i class="fa fa-home"></i><span>Home</span></a>
-        <a href="index-components.html"><i class="fa fa-star"></i><span>Features</span></a>
-        <a href="index-pages.html"><i class="fa fa-heart"></i><span>Pages</span></a>
-        <a href="index-search.html"><i class="fa fa-search"></i><span>Search</span></a>
-        <a href="#" data-menu="menu-settings"><i class="fa fa-cog"></i><span>Settings</span></a>
+    <div id="footer-menu" class="footer-menu-2-icons footer-menu-style-1">
+        <a href="/qr"><i class="fa fa-qrcode"></i><span>QR Code</span></a>
+        <a href="/storepoint" class="active-nav"><i class="fa fa-store"></i><span>Store Point</span></a>
         <div class="clear"></div>
     </div>
     
     <div class="page-content header-clear-medium">   
-            
-                
+                  
         <div class="content-boxed">
             <div class="content">
 
-                    <input id="change" type="text" placeholder=""> <br> <!-- 잔돈 -->
-                    <button id="btn" href="#" class="button button-full button-m shadow-large button-round-small bg-green1-dark top-10 bottom-0">click</button>
-                
+                    <h1 class="bolder">Store Point</h1>
+                    <p>
+                            <a href="#" class="color-red1-dark">Fill in the lower blank, please.</a>
+                    </p>
+                    <br>
+
+                    <select id="myselect" name="myselect"> <!-- 화폐단위 -->
+                        <option value="" selected="selected">Money Unit</option><option value="USD">미국 USD</option>
+                        <option value="EUR">유럽연합 EUR</option><option value="JPY">일본 JPY</option><option value="CNY">중국 CNY</option>
+                        <option value="HKD">홍콩 HKD</option><option value="TWD">대만 TWD</option><option value="GBP">영국 GBP</option>
+                        <option value="OMR">오만 OMR</option><option value="CAD">캐나다 CAD</option><option value="CHF">스위스 CHF</option>
+                        <option value="SEK">스웨덴 SEK</option><option value="AUD">호주 AUD</option><option value="NZD">뉴질랜드 NZD</option>
+                        <option value="CZK">체코 CZK</option><option value="CLP">칠레 CLP</option><option value="TRY">터키 TRY</option>
+                        <option value="MNT">몽골 MNT</option><option value="ILS">이스라엘 ILS</option><option value="DKK">덴마크 DKK</option>
+                        <option value="NOK">노르웨이 NOK</option><option value="SAR">사우디아라비아 SAR</option><option value="KWD">쿠웨이트 KWD</option>
+                        <option value="BHD">바레인 BHD</option><option value="AED">아랍에미리트 AED</option><option value="JOD">요르단 JOD</option>
+                        <option value="EGP">이집트 EGP</option><option value="THB">태국 THB</option><option value="SGD">싱가포르 SGD</option>
+                        <option value="MYR">말레이시아 MYR</option><option value="IDR">인도네시아 IDR</option><option value="QAR">카타르 QAR</option>
+                        <option value="KZT">카자흐스탄 KZT</option><option value="BND">브루나이 BND</option><option value="INR">인도 INR</option>
+                        <option value="PKR">파키스탄 PKR</option><option value="BDT">방글라데시 BDT</option><option value="PHP">필리핀 PHP</option>
+                        <option value="MXN">멕시코 MXN</option><option value="BRL">브라질 BRL</option><option value="VND">베트남 VND</option>
+                        <option value="ZAR">남아프리카 공화국 ZAR</option><option value="RUB">러시아 RUB</option><option value="HUF">헝가리 HUF</option>
+                        <option value="PLN">폴란드 PLN</option>
+                    </select>
+
+                    <div class="form-field form-name">
+                            <label class="contactNameField color-theme" for="contactNameField"><span></span></label>
+                            <input type="text" name="contactNameField" value="" class="contactField round-small requiredField" id="change_amount" />
+                            
+                    </div><br>
+                    <div class="form-field form-name">
+                            <label class="contactEmailField color-theme" for="contactEmailField"><strong>Customer Id</strong> <span>(required)</span></label>
+                            <input type="text" name="contactEmailField" value="" class="contactField round-small requiredField requiredEmailField" id="userId" />
+                    </div>
+
+                    <br>
+                    <!-- <input id="email" type="name" placeholder=""> <br> 
+                    <input id="store_id" type="text" placeholder=""> <br> 
+                    <input id="sort" type="text" placeholder=""> <br>
+                    <input id="change_amount" type="text" placeholder=""> <br>  -->
+                    
+                    <!--<select id="sort" name="sort"> 포인트 사용 OR 적립
+                        <option value="save" selected="selected">적립</option><option value="use">사용</option>
+                    -->
+                    <button id="btn" href="#" class="button bg-highlight button-m button-full round-small bottom-0 shadow-huge contactSubmitButton">click</button>
+                            
                     <script type="text/javascript" src="scripts/jquery.js"></script>
 
                     <script type="text/javascript" src="scripts/plugins.js"></script>
@@ -55,27 +94,22 @@
                         $("#btn").click(function(){
                     
                             $.ajax({
-                    
                                 url : "http://localhost:3000/changeToMoney",
-                    
                                 type : 'post',
-                    
                                 data : {
-                    
-                                    change : $("#change").val(),
+                                    change_amount : $("#change_amount").val(),
+                                    myselect : $("#myselect").val(),
+                                    user_num : $("#userId").val(),
                                 },
                     
                                 success: function(data){
-                    
                                     console.log(data);
                                     // 로딩 완료창 또는 다른 페이지로 이동
                     
                                 }
-                    
                              })
-                    
                         })
-                    
+
                         $("#authBtn").click(function(){
                     
                             var client_id = "l7xx9aeec8195c534ad9a0ebd55aa6bc9e81";
@@ -126,182 +160,6 @@
             </div>
         </div>
         
-        <a href="https://enableds.com/support/" class="default-link button button-m shadow-huge button-round-large bottom-30 button-full button-margins bg-highlight">Enabled - Support Forum</a>
-        
-        <div class="content-boxed">
-            <div class="footer">
-                <a href="#" class="footer-title uppercase ultrabold"><span class="color-highlight">Sticky</span></a>
-                <p class="footer-text">Experience and customer care is what define Enabled products. Our products and support are unmatched.</p>
-                <div class="footer-socials">
-                    <a href="#" class="round-tiny shadow-medium bg-facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="round-tiny shadow-medium bg-twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="round-tiny shadow-medium bg-phone"><i class="fa fa-phone"></i></a>
-                    <a href="#" data-menu="menu-share" class="round-tiny shadow-medium bg-red2-dark"><i class="fa fa-share-alt"></i></a>
-                    <a href="#" class="back-to-top round-tiny shadow-medium bg-dark1-light"><i class="fa fa-angle-up"></i></a>
-                </div>
-                <div class="clear"></div>
-                <p class="footer-copyright">Copyright &copy; Enabled <span id="copyright-year">2017</span>. All Rights Reserved.</p>
-                <p class="footer-links"><a href="#">Privacy Policy</a> | <a href="#">Terms and Conditions</a> | <a href="#" class="back-to-top"> Back to Top</a></p>
-                <div class="clear"></div>
-            </div>    
-        </div>
-    </div>
-    <!--Menu Call-->
-    <div id="menu-call" class="menu menu-box-bottom menu-box-detached round-large" data-menu-height="340" data-menu-effect="menu-over">
-        <div class="content bottom-0">
-            <div class="menu-title"><h1>Tap to Call</h1><p class="color-highlight">Select your Departament by Tapping.</p><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
-            <div class="divider bottom-0"></div>
-            <div class="link-list link-list-1 bottom-0">
-                <a href="#">
-                    <i class="fa fa-credit-card color-red1-dark"></i>
-                    <span class="font-13">Sales</span>
-                    <em class="bg-highlight">TAP TO CALL</em>
-                </a>
-                <a href="#">
-                    <i class="font-15 fa fa-building color-blue2-dark"></i>
-                    <span class="font-13">Office</span>
-                    <em class="bg-highlight">TAP TO CALL</em>
-                </a>  
-                <a href="#">
-                    <i class="font-15 fa fa-life-ring color-brown2-dark"></i>
-                    <span class="font-13">Support</span>
-                    <em class="bg-highlight">TAP TO CALL</em>
-                </a>     
-                <a href="#">
-                    <i class="font-12 fa fa-truck color-magenta2-dark"></i>
-                    <span class="font-13">Shipping</span>
-                    <em class="bg-highlight">TAP TO CALL</em>
-                </a>         
-                <a href="#" class="center-text no-border">
-                    <span class="font-12 right-10">Monday to Friday - 09:00AM - 05:00PM</span>
-                </a>        
-            </div>
-        </div>
-    </div>
-    <!--Menu Settings-->
-    <div id="menu-settings" class="menu menu-box-bottom menu-box-detached round-large" data-menu-height="310" data-menu-effect="menu-over">
-        <div class="content bottom-0">
-            <div class="menu-title"><h1>Settings</h1><p class="color-highlight">Flexible and Easy to Use</p><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
-            <div class="divider bottom-20"></div>
-            <div class="toggle-with-icon">
-                <i class="toggle-icon round-tiny fa fa-moon bg-red2-dark color-white"></i>
-                <a href="#" class="toggle-switch toggle-ios toggle-off" 
-                   data-toggle-theme
-                   data-toggle-height="27"
-                   data-toggle-width="50"
-                   data-toggle-content="toggle-content-1"
-                   data-toggle-checkbox="toggle-checkbox-1"
-                   data-bg-on="bg-green1-dark" 
-                   data-bg-off="">
-                    <span class="color-theme regularbold font-13">Dark Mode</span>
-                    <strong></strong>
-                    <u></u>
-                </a>    
-            </div>     
-            <div class="divider top-25 bottom-0"></div>
-            <div class="link-list link-list-2 link-list-long-border">
-                <a href="#" data-menu="menu-highlights">
-                    <i class="fa fa-tint bg-green1-dark color-white round-tiny"></i>
-                    <span>Page Highlight</span>
-                    <strong>16 Color Highlights Included</strong>
-                    <em class="bg-highlight">HOT</em>
-                </a>    
-                <a href="#" data-menu="menu-backgrounds" class="no-border">
-                    <i class="fa fa-brush bg-blue2-dark color-white round-tiny"></i>
-                    <span>Page Background</span>
-                    <strong>10 Page Gradients Included</strong>
-                    <em class="bg-highlight">NEW</em>
-                </a>      
-            </div>
-        </div> 
-        
-    </div>    
-    <!--Menu Settings Highlights-->
-    <div id="menu-highlights" class="menu menu-box-bottom menu-box-detached round-large" data-menu-height="380" data-menu-effect="menu-over">
-        <div class="content bottom-0">
-            <div class="menu-title"><h1>Highlights</h1><p class="color-highlight">Any Element can have a Highlight Color</p><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
-            <div class="divider bottom-0"></div>
-            <div class="highlight-changer bottom-30">
-                <a href="#" data-change-highlight="blue2"><i class="fa fa-circle color-blue2-dark"></i><span class="color-blue2-light">Default</span></a>
-                <a href="#" data-change-highlight="red1"><i class="fa fa-circle color-red1-dark"></i><span class="color-red2-light">Red</span></a>    
-                <a href="#" data-change-highlight="orange"><i class="fa fa-circle color-orange-dark"></i><span class="color-orange-light">Orange</span></a>    
-                <a href="#" data-change-highlight="pink2"><i class="fa fa-circle color-pink2-dark"></i><span class="color-pink2-light">Pink</span></a>    
-                <a href="#" data-change-highlight="magenta2"><i class="fa fa-circle color-magenta2-dark"></i><span class="color-magenta2-light">Purple</span></a>    
-                <a href="#" data-change-highlight="aqua"><i class="fa fa-circle color-aqua-dark"></i><span class="color-aqua-light">Aqua</span></a>      
-                <a href="#" data-change-highlight="teal"><i class="fa fa-circle color-teal-dark"></i><span class="color-teal-light">Teal</span></a>      
-                <a href="#" data-change-highlight="mint"><i class="fa fa-circle color-mint-dark"></i><span class="color-mint-light">Mint</span></a>      
-                <a href="#" data-change-highlight="green2"><i class="fa fa-circle color-green2-dark"></i><span class="color-green2-light">Green</span></a>    
-                <a href="#" data-change-highlight="green1"><i class="fa fa-circle color-green1-dark"></i><span class="color-green1-light">Grass</span></a>       
-                <a href="#" data-change-highlight="yellow2"><i class="fa fa-circle color-yellow2-dark"></i><span class="color-yellow2-light">Sunny</span></a>    
-                <a href="#" data-change-highlight="yellow1"><i class="fa fa-circle color-yellow1-dark"></i><span class="color-yellow1-light">Goldish</span></a>
-                <a href="#" data-change-highlight="brown1"><i class="fa fa-circle color-brown1-dark"></i><span class="color-brown1-light">Wood</span></a>    
-                <a href="#" data-change-highlight="dark1"><i class="fa fa-circle color-dark1-dark"></i><span class="color-dark1-light">Night</span></a>
-                <a href="#" data-change-highlight="dark2"><i class="fa fa-circle color-dark2-dark"></i><span class="color-dark2-light">Dark</span></a>
-                <div class="clear"></div>
-            </div>
-            <a href="#" data-menu="menu-settings" class="button button-s button-full button-m button-round-large bg-highlight shadow-large">Back to Settings</a>
-        </div>
-    </div>    
-    <!-- Menu Settings Backgrounds-->
-    <div id="menu-backgrounds" class="menu menu-box-bottom menu-box-detached round-large" data-menu-height="310" data-menu-effect="menu-over">
-        <div class="content">
-            <div class="menu-title"><h1>Backgrounds</h1><p class="color-highlight">Change Page Color Behind Content Boxes</p><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
-            <div class="divider bottom-0"></div>
-            <div class="background-changer bottom-30">
-                <a href="#" data-change-background="none"><i class="bg-theme"></i><span>Default</span></a>
-                <a href="#" data-change-background="plum"><i class="body-plum"></i><span class="color-plum-dark">Plum</span></a>
-                <a href="#" data-change-background="magenta3"><i class="body-magenta3"></i><span class="color-magenta3-dark">Magenta</span></a>
-                <a href="#" data-change-background="dark3"><i class="body-dark3"></i><span class="color-dark3-dark">Dark</span></a>
-                <a href="#" data-change-background="violet"><i class="body-violet"></i><span class="color-violet-dark">Violet</span></a>
-                <a href="#" data-change-background="red3"><i class="body-red3"></i><span class="color-red3-dark">Red</span></a>
-                <a href="#" data-change-background="green3"><i class="body-green3"></i><span class="color-green3-dark">Green</span></a>
-                <a href="#" data-change-background="sky"><i class="body-sky"></i><span class="color-sky-dark">Sky</span></a>
-                <a href="#" data-change-background="pumpkin"><i class="body-pumpkin"></i><span class="color-pumpkin-dark">Orange</span></a>
-                <a href="#" data-change-background="yellow3"><i class="body-yellow3"></i><span class="color-yellow3-dark">Yellow</span></a>
-                <div class="clear"></div>
-            </div>
-            <a href="#" data-menu="menu-settings" class="button button-s button-full button-m button-round-large bg-highlight shadow-large">Back to Settings</a>
-        </div>
-    </div>
-    <!-- Menu Share-->
-    <div id="menu-share" class="menu menu-box-bottom menu-box-detached round-large" data-menu-height="340" data-menu-effect="menu-over">
-        <div class="content bottom-0">
-            <div class="menu-title"><h1>Share the Love</h1><p class="color-highlight">Just Tap the Social Icon. We'll add the Link</p><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
-            <div class="divider bottom-0"></div>
-        </div>
-        <div class="link-list link-list-1 left-15 right-15">
-            <a href="#" class="shareToFacebook">
-                <i class="font-18 fab fa-facebook color-facebook"></i>
-                <span class="font-13">Facebook</span>
-                <i class="fa fa-angle-right"></i>
-            </a>
-            <a href="#" class="shareToTwitter">
-                <i class="font-18 fab fa-twitter-square color-twitter"></i>
-                <span class="font-13">Twitter</span>
-                <i class="fa fa-angle-right"></i>
-            </a>
-            <a href="#" class="shareToLinkedIn">
-                <i class="font-18 fab fa-linkedin color-linkedin"></i>
-                <span class="font-13">LinkedIn</span>
-                <i class="fa fa-angle-right"></i>
-            </a>        
-            <a href="#" class="shareToWhatsApp">
-                <i class="font-18 fab fa-whatsapp-square color-whatsapp"></i>
-                <span class="font-13">WhatsApp</span>
-                <i class="fa fa-angle-right"></i>
-            </a>   
-            <a href="#" class="shareToMail no-border">
-                <i class="font-18 fa fa-envelope-square color-mail"></i>
-                <span class="font-13">Email</span>
-                <i class="fa fa-angle-right"></i>
-            </a>
-        </div>
-    </div>
-
-    <div class="menu-hider"></div>
-</div>
-
-
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/plugins.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
